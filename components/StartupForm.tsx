@@ -36,7 +36,6 @@ const StartupForm = () => {
           title: "Success",
           description: "Your startup pitch has been created successfully",
           variant: "destructive",
-          className: "bg-green text-white",
         });
         router.push(`/startup/${result?._id}`);
       }
@@ -49,7 +48,6 @@ const StartupForm = () => {
           title: "Error",
           description: "Please check your inputs and try again",
           variant: "destructive",
-          className: "bg-red text-white",
         });
         return { ...prevState, error: "Validation failed", status: "ERROR" };
       }
@@ -57,7 +55,6 @@ const StartupForm = () => {
         title: "Error",
         description: "An unexpected error has occurred",
         variant: "destructive",
-        className: "bg-red text-white",
       });
 
       return { ...prevState, errors: "Enexpected erro", status: "ERROR" };

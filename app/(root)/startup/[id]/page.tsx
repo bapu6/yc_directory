@@ -2,7 +2,7 @@
 
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
-import { STARTUPS_BY_ID } from "@/sanity/lib/queries";
+import { PLAYLIST_BY_SLUG_QUERY, STARTUPS_BY_ID } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,13 +10,19 @@ import React, { Suspense } from "react";
 import markdown from "markdown-it";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
+import StartupCard, { StartUpTypeCard } from "@/components/StartupCard";
 
 export const experimental_ppr = true;
 const md = markdown();
 
 const StartUp = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
-  const post = await client.fetch(STARTUPS_BY_ID, { id });
+
+  const [post, { select: softwarePosts }] = await Promise.all([
+    await client.fetch(STARTUPS_BY_ID, { id }),
+    await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "software-group" }),
+  ]);
+
   const parsedContent = md.render(post?.pitch || "");
 
   if (!post) return notFound();
@@ -72,6 +78,17 @@ const StartUp = async ({ params }: { params: Promise<{ id: string }> }) => {
           )}
         </div>
         <hr className="divider !w-full" />
+
+        {softwarePosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Software posts</p>
+            <ul className="mt-7 card_grid-sm">
+              {softwarePosts.map((post: StartUpTypeCard) => (
+                <StartupCard key={post?._id} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Todo:Editor Selected startup */}
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
