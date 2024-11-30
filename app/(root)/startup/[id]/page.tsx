@@ -1,13 +1,14 @@
 /** @format */
 
-import { formatDate } from "@/lib/utils";
-import { client } from "@/sanity/lib/client";
-import { PLAYLIST_BY_SLUG_QUERY, STARTUPS_BY_ID } from "@/sanity/lib/queries";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React, { Suspense } from "react";
 import markdown from "markdown-it";
+
+import { formatDate } from "@/lib/utils";
+import { client } from "@/sanity/lib/client";
+import { PLAYLIST_BY_SLUG_QUERY, STARTUPS_BY_ID } from "@/sanity/lib/queries";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard, { StartUpTypeCard } from "@/components/StartupCard";
@@ -36,7 +37,7 @@ const StartUp = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
       <section className="section_container">
         <Image
-          src={post.image || ""}
+          src={post.image || null}
           alt="post-image"
           width={0}
           height={0}
@@ -50,7 +51,7 @@ const StartUp = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-center mb-3"
             >
               <Image
-                src={post.author?.image || ""}
+                src={post.author?.image || null}
                 alt="author-image"
                 width={64}
                 height={64}

@@ -1,9 +1,9 @@
 /** @format */
 
 import React from "react";
-import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { EyeIcon } from "lucide-react";
 
 import { cn, formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -56,7 +56,7 @@ const StartupCard = ({ post }: { post: StartUpTypeCard }) => {
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
         <Image
-          src={image || ""}
+          src={image || null}
           width={0}
           height={0}
           sizes="100vw"

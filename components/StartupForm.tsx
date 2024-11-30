@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useActionState, useState } from "react";
+import { useRouter } from "next/navigation";
 import MEDditor from "@uiw/react-md-editor";
 import { Send } from "lucide-react";
 import { z } from "zod";
@@ -11,7 +12,6 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { formSchema } from "@/lib/validation";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
 const StartupForm = () => {
@@ -19,7 +19,7 @@ const StartupForm = () => {
   const [pitch, setPitch] = useState("");
   const { toast } = useToast();
   const router = useRouter();
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: unknown, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,

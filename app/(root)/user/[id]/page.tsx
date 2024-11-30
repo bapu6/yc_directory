@@ -30,7 +30,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </h3>
           </div>
           <Image
-            src={user?.image || ""}
+            src={user?.image || null}
             width={220}
             height={220}
             alt="profile-image"

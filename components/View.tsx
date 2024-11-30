@@ -1,12 +1,13 @@
 /** @format */
 
 import React from "react";
+import { unstable_after as after } from "next/server";
+import pluralize from "pluralize";
+
 import Ping from "./Ping";
 import { client } from "@/sanity/lib/client";
 import { STARTUPS_VIEWS_BY_ID } from "@/sanity/lib/queries";
-import pluralize from "pluralize";
 import { writeClient } from "@/sanity/lib/write-client";
-import { unstable_after as after } from "next/server";
 
 const View = async ({ id }: { id: string }) => {
   const { views = 0 } = await client
