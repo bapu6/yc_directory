@@ -48,7 +48,6 @@ export const createPitch = async (
       error: "",
       status: "SUCCESS",
     });
-    console.log("response", response);
     return response;
   } catch (error) {
     console.log(error);
