@@ -42,7 +42,9 @@ export const createPitch = async (
       pitch,
       views: 0,
     };
-    const result = await writeClient.create({ _type: "startup", ...startup });
+    const result = await writeClient
+      .withConfig({ useCdn: false })
+      .create({ _type: "startup", ...startup });
     const response = parseServerActionResponse({
       ...result,
       error: "",
