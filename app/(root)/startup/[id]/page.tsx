@@ -22,7 +22,7 @@ const StartUp = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const [post, { select: softwarePosts }] = await Promise.all([
     await client.fetch(STARTUPS_BY_ID, { id }),
-    await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "software-group" }),
+    await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "software" }),
   ]);
 
   const parsedContent = md.render(post?.pitch || "");
