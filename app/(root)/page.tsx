@@ -5,6 +5,8 @@ import SearchForm from "@/components/SearchForm";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home({
   searchParams,
 }: {
