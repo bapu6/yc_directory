@@ -2,4 +2,4 @@
 
 Please visit the below link to give it try
 
-hosted url :- https://yc-directory-beta-ebon.vercel.app
+hosted url :- https://yc-directory-lyart.vercel.app/
