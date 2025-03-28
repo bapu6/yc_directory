@@ -3,7 +3,7 @@
 
 import React, { useActionState, useState } from "react";
 import { useRouter } from "next/navigation";
-import MEDditor from "@uiw/react-md-editor";
+import MDEditor from "@uiw/react-md-editor";
 import { Send } from "lucide-react";
 import { z } from "zod";
 
@@ -135,7 +135,7 @@ const StartupForm = () => {
         <label htmlFor="pitch" className="startup-form_label">
           Pitch
         </label>
-        <MEDditor
+        <MDEditor
           value={pitch}
           onChange={(value) => {
             setPitch(value as string);

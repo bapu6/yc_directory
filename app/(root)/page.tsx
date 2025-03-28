@@ -1,11 +1,12 @@
 /** @format */
-
+import { revalidatePath } from "next/cache";
 import StartupCard, { StartUpTypeCard } from "@/components/StartupCard";
 import SearchForm from "@/components/SearchForm";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function Home({
   searchParams,

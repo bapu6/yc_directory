@@ -28,7 +28,7 @@ const View = async ({ id }: { id: string }) => {
         <Ping />
       </div>
       <p className="view-text">
-        <span className="font-bblack">
+        <span className="font-black">
           {pluralize("view", views)} : {views}
         </span>
       </p>

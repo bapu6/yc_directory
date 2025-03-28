@@ -46,8 +46,8 @@ const Navbar = async () => {
             <button
               onClick={async () => {
                 "use server";
-                // await signIn("github");
-                await signIn("google"); //use for google sign in
+                await signIn("github");
+                // await signIn("google"); //use for google sign in
               }}
             >
               <span>Login</span>
